@@ -1,0 +1,12 @@
+#ifndef CLIENTBASE_GLOBAL_H
+#define CLIENTBASE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(CLIENTBASE_LIBRARY)
+#  define CLIENTBASESHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define CLIENTBASESHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // CLIENTBASE_GLOBAL_H

@@ -1,0 +1,12 @@
+#ifndef CLIENTLIST_GLOBAL_H
+#define CLIENTLIST_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(CLIENTLIST_LIBRARY)
+#  define CLIENTLISTSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define CLIENTLISTSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // CLIENTLIST_GLOBAL_H
