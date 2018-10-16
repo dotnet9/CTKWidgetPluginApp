@@ -11,6 +11,16 @@ QT       -= gui
 TARGET = ClientList
 TEMPLATE = lib
 
+include(../../CTK.pri)
+INCLUDEPATH += ../../include
+
+
+CONFIG(debug, debug|release){
+    DESTDIR = ../../../CTKWidgetPluginApp/bin/debug/MainPlugins
+} else {
+    DESTDIR = ../../../CTKWidgetPluginApp/bin/release/MainPlugins
+}
+
 DEFINES += CLIENTLIST_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
@@ -25,13 +35,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        clientlist.cpp
+    clientlistview.cpp \
+    pluginimpl.cpp \
+    pluginactivator.cpp
 
 HEADERS += \
-        clientlist.h \
-        clientlist_global.h 
+    clientlistview.h \
+    pluginimpl.h \
+    pluginactivator.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+RESOURCES += \
+    resource.qrc
+
+FORMS += \
+    clientlistview.ui

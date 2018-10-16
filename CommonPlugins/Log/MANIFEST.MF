@@ -1,0 +1,8 @@
+Plugin-SymbolicName: CommonPlugin.Log
+Plugin-ActivationPolicy: eager
+Plugin-Category: CommonPlugin
+Plugin-ContactAddress: lsquange.com
+Plugin-Description: A plugin for log
+Plugin-Name: Log
+Plugin-Vendor: lsquange
+Plugin-Version: 1.0.0

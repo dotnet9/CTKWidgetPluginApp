@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+*.user
+*.user
+CTKWidgetPluginApp.pro.user
+*.user

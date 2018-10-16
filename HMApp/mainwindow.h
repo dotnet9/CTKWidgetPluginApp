@@ -7,6 +7,7 @@ namespace Ui {
 class MainWindow;
 }
 
+class ctkPluginContext;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -16,7 +17,13 @@ public:
     ~MainWindow();
 
 private:
+    void loadMainPlugin();
+    void loadCommonPlugin();
+
+private:
     Ui::MainWindow *ui;
+
+    ctkPluginContext *context;
 };
 
 #endif // MAINWINDOW_H

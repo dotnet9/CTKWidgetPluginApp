@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/ClientCount/META-INF">
+        <file>MANIFEST.MF</file>
+    </qresource>
+</RCC>
