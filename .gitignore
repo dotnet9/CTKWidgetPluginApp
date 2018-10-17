@@ -34,3 +34,8 @@
 *.user
 CTKWidgetPluginApp.pro.user
 *.user
+*.db
+*.log
+*.user
+*.user
+CTKWidgetPluginApp.pro.user

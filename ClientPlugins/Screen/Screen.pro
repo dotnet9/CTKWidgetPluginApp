@@ -11,6 +11,16 @@ QT       -= gui
 TARGET = Screen
 TEMPLATE = lib
 
+include(../../CTK.pri)
+INCLUDEPATH += ../../include
+
+
+CONFIG(debug, debug|release){
+    DESTDIR = ../../../CTKWidgetPluginApp/bin/debug/ClientPlugins
+} else {
+    DESTDIR = ../../../CTKWidgetPluginApp/bin/release/ClientPlugins
+}
+
 DEFINES += SCREEN_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
@@ -25,13 +35,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        screen.cpp
+    pluginactivator.cpp \
+    pluginimpl.cpp \
+    screenview.cpp \
+    showclientplugineventhandler.cpp
 
 HEADERS += \
-        screen.h \
-        screen_global.h 
+    pluginactivator.h \
+    pluginimpl.h \
+    screenview.h \
+    showclientplugineventhandler.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+RESOURCES += \
+    resource.qrc
+
+FORMS += \
+    screenview.ui

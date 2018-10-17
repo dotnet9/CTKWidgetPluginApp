@@ -1,0 +1,8 @@
+Plugin-SymbolicName: ClientPlugin.ClientBase
+Plugin-ActivationPolicy: eager
+Plugin-Category: ClientPlugin
+Plugin-ContactAddress: lsquange.com
+Plugin-Description: A plugin for client monitor child module
+Plugin-Name: ClientBase
+Plugin-Vendor: lsquange
+Plugin-Version: 1.0.0

@@ -9,6 +9,7 @@
 void PluginActivator::start(ctkPluginContext *context)
 {
     Log4Qt::LogManager::setHandleQtMessages(true);
+    Log4Qt::Appender::Appender::logger()::
 
     s.reset(new PluginImpl(context));
 }

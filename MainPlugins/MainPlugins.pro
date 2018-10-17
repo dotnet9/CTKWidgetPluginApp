@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     ClientList \
-    ClientCount
+    ClientCount \
+    ClientMonitor

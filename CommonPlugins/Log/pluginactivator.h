@@ -8,7 +8,7 @@ class PluginActivator : public QObject, public ctkPluginActivator
 {
     Q_OBJECT
     Q_INTERFACES(ctkPluginActivator)
-    Q_PLUGIN_METADATA(IID "ClientList")
+    Q_PLUGIN_METADATA(IID "Log")
 
 public:
     void start(ctkPluginContext* context);

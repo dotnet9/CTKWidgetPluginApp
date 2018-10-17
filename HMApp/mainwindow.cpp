@@ -24,8 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->splitterBottomVer->setStretchFactor(0, 3);
     ui->splitterBottomVer->setStretchFactor(1, 1);
 
-    loadMainPlugin();
-    loadCommonPlugin();
+    loadPlugin("MainPlugins");
+    loadPlugin("CommonPlugins");
+    loadPlugin("ClientPlugins");
 }
 
 MainWindow::~MainWindow()
@@ -35,9 +36,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::loadMainPlugin()
+void MainWindow::loadPlugin(const QString& pluginDir)
 {
-    QString path = QApplication::applicationDirPath() + "/MainPlugins";
+    QString path = QString("%1/%2").arg(QApplication::applicationDirPath()).arg(pluginDir);
     ctkPluginFrameworkLauncher::addSearchPath(path);
     ctkPluginFrameworkLauncher::start("org.commontk.eventadmin");
 
@@ -54,55 +55,23 @@ void MainWindow::loadMainPlugin()
             qDebug() << "Symbolic Name:" << symb << "\r\n";
 
             plugin->start(ctkPlugin::START_TRANSIENT);
-            qDebug() << "Plugin start ...";
+            qDebug() << pluginDir << " Plugin start ...";
 
             ctkServiceReference reference = context->getServiceReference<PluginService>();
             if (reference) {
                 PluginService* service = qobject_cast<PluginService *>(context->getService(reference));
                 if(service != Q_NULLPTR) {
                     QWidget* w = service->getWidget();
+                    if(w == nullptr) {
+                        continue;
+                    }
                     if("MainPlugin.ClientList" == symb) {
                         ui->gridLayoutTopLeft->addWidget(w);
                     }
                     else if("MainPlugin.ClientCount" == symb) {
                         ui->gridLayoutTopRight->addWidget(w);
                     }
-                }
-            }
-        } catch(const ctkPluginException &e) {
-            qDebug() << "Failed to install plugin" << e.what();
-            return;
-        }
-    }
-}
-
-void MainWindow::loadCommonPlugin()
-{
-    QString path = QApplication::applicationDirPath() + "/CommonPlugins";
-    ctkPluginFrameworkLauncher::addSearchPath(path);
-    ctkPluginFrameworkLauncher::start("org.commontk.eventadmin");
-
-    context = ctkPluginFrameworkLauncher::getPluginContext();
-
-    QDirIterator itPlugin(path, QStringList() << "*.dll" << "*.so", QDir::Files);
-    while(itPlugin.hasNext()) {
-        QString strPlugin = itPlugin.next();
-        try {
-            QSharedPointer<ctkPlugin> plugin = context->installPlugin(QUrl::fromLocalFile(strPlugin));
-
-            // 获取符号名
-            QString symb = plugin->getSymbolicName();
-            qDebug() << "Symbolic Name:" << symb << "\r\n";
-
-            plugin->start(ctkPlugin::START_TRANSIENT);
-            qDebug() << "Plugin start ...";
-
-            ctkServiceReference reference = context->getServiceReference<PluginService>();
-            if (reference) {
-                PluginService* service = qobject_cast<PluginService *>(context->getService(reference));
-                if(service != Q_NULLPTR) {
-                    QWidget* w = service->getWidget();
-                    if("CommonPlugin.Log" == symb){
+                    else if("CommonPlugin.Log" == symb){
                         ui->gridLayoutBottom->addWidget(w);
                     }
                 }

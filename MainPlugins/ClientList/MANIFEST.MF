@@ -6,3 +6,4 @@ Plugin-Description: A plugin for client list
 Plugin-Name: ClientList
 Plugin-Vendor: lsquange
 Plugin-Version: 1.0.0
+Require-Plugin: MainPlugin.ClientMonitor

@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-10-15T23:19:06
+# Project created by QtCreator 2018-10-17T09:14:05
 #
 #-------------------------------------------------
 
@@ -8,21 +8,20 @@ QT       += widgets
 
 QT       -= gui
 
-TARGET = Log
+TARGET = ClientMonitor
 TEMPLATE = lib
 
 include(../../CTK.pri)
-include(../../Log4Qt.pri)
 INCLUDEPATH += ../../include
 
 
 CONFIG(debug, debug|release){
-    DESTDIR = ../../../CTKWidgetPluginApp/bin/debug/CommonPlugins
+    DESTDIR = ../../../CTKWidgetPluginApp/bin/debug/MainPlugins
 } else {
-    DESTDIR = ../../../CTKWidgetPluginApp/bin/release/CommonPlugins
+    DESTDIR = ../../../CTKWidgetPluginApp/bin/release/MainPlugins
 }
 
-DEFINES += LOG_LIBRARY
+DEFINES += CLIENTMONITOR_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -36,14 +35,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    logview.cpp \
+    clientmonitorview.cpp \
     pluginactivator.cpp \
-    pluginimpl.cpp
+    pluginimpl.cpp \
+    showclientmonitoreventhandler.cpp \
+    showclientplugineventhandler.cpp
 
 HEADERS += \
-    logview.h \
+    clientmonitorview.h \
     pluginactivator.h \
-    pluginimpl.h
+    pluginimpl.h \
+    showclientmonitoreventhandler.h \
+    showclientplugineventhandler.h
 
 unix {
     target.path = /usr/lib
@@ -54,4 +57,4 @@ RESOURCES += \
     resource.qrc
 
 FORMS += \
-    logview.ui
+    clientmonitorview.ui
