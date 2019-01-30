@@ -7,9 +7,15 @@ PluginImpl::PluginImpl(ctkPluginContext* context)
     : m_pContext(context)
 {
     context->registerService<PluginService>(this);
+    m_pLogView = new LogView(context);
+}
+
+PluginImpl::~PluginImpl()
+{
+    delete m_pLogView;
 }
 
 QWidget* PluginImpl::getWidget()
 {
-    return new LogView(m_pContext);
+    return m_pLogView;
 }

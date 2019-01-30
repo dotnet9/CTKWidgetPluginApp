@@ -17,7 +17,9 @@ public:
     ~MainWindow();
 
 private:
+    void initPluginFW();
     void loadPlugin(const QString& pluginDir);
+    void startPlugins();
 
 private:
     Ui::MainWindow *ui;

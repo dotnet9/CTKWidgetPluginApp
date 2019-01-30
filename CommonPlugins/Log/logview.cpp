@@ -16,3 +16,10 @@ LogView::~LogView()
 {
     delete ui;
 }
+
+void LogView::onAppendLog(const QString &log)
+{
+    QMutexLocker lock(&m_mutex);
+    //将日志信息输出到窗口组件
+    ui->textEdit->insertPlainText(log);
+}
