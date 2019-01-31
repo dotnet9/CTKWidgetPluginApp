@@ -11,14 +11,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = HMApp
 TEMPLATE = app
 
-include(../CTK.pri)
-INCLUDEPATH += ../include
+include(../../CTK.pri)
+INCLUDEPATH += ../../include
 
 
 CONFIG(debug, debug|release){
-    DESTDIR = ../../CTKWidgetPluginApp/bin/debug
+    DESTDIR = ../../bin/debug
 } else {
-    DESTDIR = ../../CTKWidgetPluginApp/bin/release
+    DESTDIR = ../../bin/release
 }
 
 # The following define makes your compiler emit warnings if you use
