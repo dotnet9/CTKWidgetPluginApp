@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     ClientBase \
-    Screen
+    Screen \
+    Client1

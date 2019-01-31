@@ -6,4 +6,5 @@ SUBDIRS += \
     HMApp \
     MainPlugins \
     ClientPlugins \
-    CommonPlugins
+    CommonPlugins \
+    Applications

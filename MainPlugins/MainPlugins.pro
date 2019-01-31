@@ -3,4 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     ClientList \
     ClientCount \
-    ClientMonitor
+    ClientMonitor \
+    MainWindow
