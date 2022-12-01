@@ -12,7 +12,7 @@ TARGET = Log
 TEMPLATE = lib
 
 include(../../CTK.pri)
-include(../../Log4Qt.pri)
+include(../../log4qt/Log4Qt.pri)
 INCLUDEPATH += ../../include
 
 
@@ -38,12 +38,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     logview.cpp \
     pluginactivator.cpp \
-    pluginimpl.cpp
+    pluginimpl.cpp \
+    WidgetAppender.cpp
 
 HEADERS += \
     logview.h \
     pluginactivator.h \
-    pluginimpl.h
+    pluginimpl.h \
+    WidgetAppender.h
 
 unix {
     target.path = /usr/lib

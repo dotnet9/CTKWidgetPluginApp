@@ -1,0 +1,12 @@
+[org.commontk.pluginfw]
+debug=1
+[org.commontk.pluginfw/debug]
+errors=1
+pluginfw=1
+hooks=1
+lazy_activation=1
+ldap=1
+service_reference=0
+startlevel=0
+url=0
+resolve=1

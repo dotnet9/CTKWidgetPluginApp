@@ -64,14 +64,19 @@ void ClientMonitorView::showPlugin(const QString &clientPluginMark, QWidget* vie
     bool exist(false);
     QMap<QString, QWidget*>::iterator pMapI;
     for(pMapI = m_mapPluginWidgets.begin(); pMapI != m_mapPluginWidgets.end(); ++pMapI) {
-        if(clientPluginMark == pMapI.key()
-                && pMapI.value() != nullptr) {
-            pMapI.value()->setVisible(true);
+        if(clientPluginMark == pMapI.key())
+        {
             exist = true;
+
+            if (view->isHidden()){
+                ui->gridLayoutRight->addWidget(view);
+                view->show();
+            } else {
+                ui->gridLayoutRight->removeWidget(view);
+                view->hide();
+            }
         }
-        else if(pMapI.value() != nullptr) {
-            pMapI.value()->hide();
-        }
+
     }
     if(!exist) {
         m_mapPluginWidgets.insert(clientPluginMark, view);

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "pluginservice.h"
+#include "logview.h"
 
 class ctkPluginContext;
 class PluginImpl : public QObject, public PluginService
@@ -11,10 +12,12 @@ class PluginImpl : public QObject, public PluginService
     Q_INTERFACES(PluginService)
 public:
     PluginImpl(ctkPluginContext* context);
+    ~PluginImpl();
     QWidget* getWidget() Q_DECL_OVERRIDE;
 
 private:
     ctkPluginContext* m_pContext;
+    LogView *m_pLogView;
 };
 
 #endif // PLUGINIMPL_H
